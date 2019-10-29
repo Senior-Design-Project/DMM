@@ -2,15 +2,15 @@
 #include <LiquidCrystal_I2C.h>
 
 LiquidCrystal_I2C lcd(0x27,16,2);
-const int analog1 = A3;
-const int analog2 = A4;
+const int analog1 = A0;
+const int analog2 = A1;
 int val1 = 0;
 int val2 = 0;
 double val1f = 0.0;
 double val2f = 0.0;
 const double conv = 0.009765625;
-char val1s[16] = "";
-char val2s[16] = "";
+char val1s[8] = "";
+char val2s[8] = "";
 
 void setup() {
   // put your setup code here, to run once:
@@ -23,6 +23,8 @@ void setup() {
 }
 
 void loop() {
+  char ostr1[16] = "A0: ";
+  char ostr2[16] = "A1: ";
   // put your main code here, to run repeatedly:
   lcd.clear();
   // read in new values on the analog pins
@@ -36,7 +38,8 @@ void loop() {
   dtostrf(val2f, 6, 3, val2s);
   // display the strings on the lcd
   lcd.setCursor(0, 0);
-  lcd.print(val1s);
+  lcd.print(strcat(ostr1,val1s));
   lcd.setCursor(0, 1);
-  lcd.print(val2s);
+  lcd.print(strcat(ostr2,val2s));
+  delay(500);
 }
