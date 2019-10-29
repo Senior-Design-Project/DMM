@@ -34,12 +34,12 @@ void loop() {
   val1f = val1 * conv;
   val2f = val2 * conv;
   // convert the values to strings
-  dtostrf(val1f, 6, 3, val1s);
-  dtostrf(val2f, 6, 3, val2s);
+  dtostrf(val1f, 6, 4, val1s);
+  dtostrf(val2f, 6, 4, val2s);
   // display the strings on the lcd
   lcd.setCursor(0, 0);
-  lcd.print(strcat(ostr1,val1s));
+  lcd.print(strcat(strcat(ostr1,val1s)," Volts"));
   lcd.setCursor(0, 1);
-  lcd.print(strcat(ostr2,val2s));
+  lcd.print(strcat(strcat(ostr2,val2s)," Volts"));
   delay(500);
 }
